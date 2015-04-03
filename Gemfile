@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'thin'
+gem 'faye-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'
