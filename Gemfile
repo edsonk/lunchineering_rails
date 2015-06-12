@@ -11,6 +11,7 @@ gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'thin'
 gem 'faye-rails'
+gem 'devise', '~> 3.4.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
