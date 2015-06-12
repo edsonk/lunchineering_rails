@@ -11,13 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217182940) do
+ActiveRecord::Schema.define(version: 20150501201726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_destination_options", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "destination_id"
+    t.boolean  "selected",       default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "destination_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_votes", ["destination_option_id"], name: "index_event_votes_on_destination_option_id", using: :btree
+  add_index "event_votes", ["event_id"], name: "index_event_votes_on_event_id", using: :btree
+  add_index "event_votes", ["user_id"], name: "index_event_votes_on_user_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "expires_at"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

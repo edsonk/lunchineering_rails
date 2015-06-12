@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
   include Concerns::EventPublishing
 
   def index
-    render json: Destination.all
+    render json: Destination.chronological
   end
 
   def show
