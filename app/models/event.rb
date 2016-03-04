@@ -1,16 +1,30 @@
 class Event < ActiveRecord::Base
-  after_initialize :set_default_state
+  include Chronology
+
+  after_initialize :set_defaults
 
   has_many :votes, class_name: 'EventVote'
-  has_many :destination_options, class_name: 'EventDestinationOption'
+  has_many :destination_options
 
-  def self.chronological
-    order(:created_at)
+  set_chronology
+
+  def user_vote(user)
+    votes.by_user(user).first
+  end
+
+  def closed?
+    state.to_s == 'closed'
+  end
+
+  def close!
+    destination_options.max_by(&:vote_count).select!
+    update_attribute(:state, :closed)
   end
 
   private
 
-  def set_default_state
+  def set_defaults
     self.state ||= :new
+    self.expires_at ||= 2.days.from_now
   end
 end
