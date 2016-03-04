@@ -10,6 +10,13 @@ GIT
       warden (~> 1.2.3)
 
 GIT
+  remote: git://github.com/rack/rack.git
+  revision: 05bdc51dd7d39f6cea66481cd89143da0df1b41c
+  specs:
+    rack (2.0.0.alpha)
+      json
+
+GIT
   remote: git://github.com/rails-api/active_model_serializers.git
   revision: df815c48ba996c681ab318a18d302362eaa2b855
   specs:
@@ -107,6 +114,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kgio (2.10.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -125,9 +133,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (3.0.2)
-    rack (2.0.0.alpha)
-      json
     rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -139,7 +144,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    raindrops (0.16.0)
     rake (10.5.0)
+    redis (3.2.2)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.21)
@@ -167,6 +174,13 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (5.0.1)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    unicorn-rails (2.2.0)
+      rack
+      unicorn
     warden (1.2.6)
       rack (>= 1.0)
     websocket-driver (0.6.3)
@@ -185,12 +199,15 @@ DEPENDENCIES
   memoist
   pg
   pry
-  puma
+  rack!
   rack-cors
   rails!
+  redis
   sass-rails
   turbolinks
   uglifier
+  unicorn
+  unicorn-rails
 
 BUNDLED WITH
    1.11.2
