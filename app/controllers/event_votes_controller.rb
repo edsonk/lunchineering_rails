@@ -13,7 +13,7 @@ class EventVotesController < ApplicationController
 
   def update
     if vote.update_attributes(vote_params)
-      # publish_event('/event_votes', serialized_resource(vote))
+      publish_event('event_votes', serialized_resource(vote))
       render json: vote
     end
   end

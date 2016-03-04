@@ -11,14 +11,14 @@ class DestinationsController < ApplicationController
 
   def update
     destination.update_attributes(destination_params)
-    # publish_event('/destinations', serialized_resource(destination))
+    publish_event('destinations', serialized_resource(destination))
 
     render json: destination
   end
 
   def create
     destination = Destination.create(destination_params)
-    publish_event('/destinations', serialized_resource(destination))
+    publish_event('destinations', serialized_resource(destination))
 
     render json: destination
   end
