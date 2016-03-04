@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
   include Concerns::EventPublishing
 
   def index
-    render json: Destination.chronological
+    render json: Destination.alphabetized
   end
 
   def show
@@ -11,14 +11,14 @@ class DestinationsController < ApplicationController
 
   def update
     destination.update_attributes(destination_params)
-    publish_event('/destinations', destination.to_json)
+    publish_event('/destinations', serialized_resource(destination))
 
     render json: destination
   end
 
   def create
     destination = Destination.create(destination_params)
-    publish_event('/destinations', destination.to_json)
+    publish_event('/destinations', serialized_resource(destination))
 
     render json: destination
   end
@@ -31,7 +31,7 @@ class DestinationsController < ApplicationController
   private
 
   def destination_params
-    params.require(:destination).permit(:name)
+    data[:attributes].slice(:name)
   end
 
   def destination

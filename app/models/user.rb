@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
 
   before_create :generate_authentication_token
 
+  has_many :event_votes
+
+  def self.by_authorization(token, options = {})
+    with_auth_token(token)
+      .where(options.slice(:email))
+      .first
+  end
+
   def self.with_auth_token(token)
     where(authentication_token: token)
   end

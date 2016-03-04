@@ -7,11 +7,12 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'thin'
 gem 'faye-rails'
 gem 'devise', '~> 3.4.0'
+gem 'memoist'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -22,5 +23,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'pry'
+  gem 'better_errors'
   gem 'web-console', '~> 2.0'
 end
