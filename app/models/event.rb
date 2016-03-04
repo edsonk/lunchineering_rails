@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
   end
 
   def close!
+    return if closed?
+
     destination_options.max_by(&:vote_count).select!
     update_attribute(:state, :closed)
   end

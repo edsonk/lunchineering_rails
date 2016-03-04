@@ -4,6 +4,6 @@ class DestinationOptionSerializer < ActiveModel::Serializer
   has_one :destination
 
   def selected
-    object.voted_by?(options[:current_user])
+    object.voted_by?(current_user)
   end
 end

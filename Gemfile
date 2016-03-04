@@ -1,28 +1,28 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.3.0'
 
-gem 'rails', '4.2.0'
+gem 'rails', github: 'rails/rails'
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'active_model_serializers', '~> 0.10.0.rc3'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
-gem 'thin'
 gem 'faye-rails'
-gem 'devise', '~> 3.4.0'
+gem 'puma'
+gem 'devise', github: 'plataformatec/devise'
 gem 'memoist'
 
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
 
-gem 'bcrypt', '~> 3.1.7'
+# gem 'jbuilder', '~> 2.0'
+# gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'pry'
   gem 'better_errors'
-  gem 'web-console', '~> 2.0'
+  # gem 'web-console', '~> 2.0'
 end

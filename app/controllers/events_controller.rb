@@ -4,9 +4,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    render json: event,
-      current_user: current_user,
-      include: ['destination_options.destination', 'votes']
+    render json: event, include: ['destination_options.destination', 'votes']
   end
 
   # def update
