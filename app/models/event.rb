@@ -8,6 +8,14 @@ class Event < ActiveRecord::Base
 
   set_chronology
 
+  def self.check_closed!
+    to_close.each(&:close!)
+  end
+
+  def self.to_close
+    where("expires_at <= ?", Time.now).where.not(state: :closed)
+  end
+
   def user_vote(user)
     votes.by_user(user).first
   end

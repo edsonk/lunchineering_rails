@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    Event.check_closed!
     render json: Event.reverse_chronological
   end
 
